@@ -108,7 +108,7 @@ next:
 		JB		readloop
 
 		MOV		[0x0ff0],CH		; write the number of cylinders read by IPL to 0xff0
-		JMP		0xc200			; jump to eos.sys. The number is counted by 0x8000 + file location in the image.
+		JMP		0xc200			; jump to OS.sys. The number is counted by 0x8000 + file location in the image.
 
 error:
 		MOV		SI,msg
