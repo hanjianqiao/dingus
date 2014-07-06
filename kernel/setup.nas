@@ -182,7 +182,7 @@ GDT0:
 
 		DW		0
 GDTR0:
-		DW		8*3-1
+		DW		8*3-1	; limit = size - 1
 		DD		GDT0
 
 		ALIGNB	16
