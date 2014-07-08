@@ -1,0 +1,26 @@
+TOOLPATH = ../../tools/
+INCPATH  = ../include/
+
+MAKE     = $(TOOLPATH)make.exe -r
+NASK     = $(TOOLPATH)nask.exe
+CC1      = $(TOOLPATH)cc1.exe -I$(INCPATH) -Os -Wall -quiet
+GAS2NAS	 = $(TOOLPATH)gas2nas.exe -a
+OBJ2BIM  = $(TOOLPATH)obj2bim.exe
+MAKEFONT = $(TOOLPATH)makefont.exe
+BIN2OBJ  = $(TOOLPATH)bin2obj.exe
+BIM2HRB  = $(TOOLPATH)bim2hrb.exe
+RULEFILE = $(INCPATH)dingus.rul
+EDIMG    = $(TOOLPATH)edimg.exe
+IMGTOL   = $(TOOLPATH)imgtol.com
+GOLIB    = $(TOOLPATH)golib00.exe 
+COPY     = copy
+DEL      = del
+
+%.gas : %.c Makefile
+	$(CC1) -o $*.gas $*.c
+
+%.nas : %.gas Makefile
+	$(GAS2NAS) $*.gas $*.nas
+
+%.obj : %.nas Makefile
+	$(NASK) $*.nas $*.obj $*.lst
