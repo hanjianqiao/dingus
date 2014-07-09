@@ -1,6 +1,6 @@
 [INSTRSET "i486p"]	; Declare to use instruction set till 486
 
-VBEMODE		EQU		0x101			; 1024 x  768 x 8bit video mode
+VBEMODE		EQU		0x107			; 1024 x  768 x 8bit video mode
 ; VBE mode
 ;	0x100 :  640 x  400 x 8bit video mode
 ;	0x101 :  640 x  480 x 8bit video mode

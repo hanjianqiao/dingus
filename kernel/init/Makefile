@@ -1,8 +1,10 @@
 include ../include/kernel_makefile
 
+default:
+	$(MAKE) setup.obj
 
-setup.bin: setup.nas
-	$(NASK) setup.nas setup.bin setup.lst
+setup.obj: setup.nas
+	$(NASK) setup.nas setup.obj setup.lst
 
 .PHONY:clean
 clean:
@@ -11,4 +13,4 @@ clean:
 .PHONY:src_only
 src_only:
 	$(MAKE) clean
-	$(DEL) setup.bin
+	$(DEL) setup.obj
