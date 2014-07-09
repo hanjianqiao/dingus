@@ -19,13 +19,19 @@ DEL      = del
 default:
 	$(MAKE) run
 
-dingus.img : Makefile
+dingus.img : ipl/ipl.bin kernel/dingus.kernel Makefile
 	$(MAKE) full
 	$(EDIMG)   imgin:$(INCPATH)fdimg0at.tek \
 		wbinimg src:ipl/ipl.bin len:512 from:0 to:0 \
 		copy from:kernel/dingus.kernel to:@: \
 		imgout:dingus.img
 
+blank.img:
+	$(MAKE) full
+	$(EDIMG)   imgin:$(INCPATH)fdimg0at.tek \
+		wbinimg src:ipl/ipl.bin len:512 from:0 to:0 \
+		imgout:blank.img
+	
 .PHONY: run
 run :
 	$(MAKE) dingus.img

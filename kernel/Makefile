@@ -18,7 +18,8 @@ DEL      = del
 
 RULEFILE = include/dingus.rul
 
-OBJS_KERNEL = main/main.obj memory/memory.obj drivers/io.obj
+OBJS_KERNEL = main/main.obj memory/memory.obj drivers/io.obj \
+				graphic/graphic.obj graphic/ascii.obj
 
 default:
 	$(MAKE) dingus.kernel
@@ -39,14 +40,18 @@ dingus.bim : $(OBJS_KERNEL) Makefile
 .PHONY: full
 full:
 	$(MAKE) -C init
+	$(MAKE) -C graphic
 	$(MAKE) -C drivers
 	$(MAKE) -C memory
 	$(MAKE) -C main
+	$(MAKE) dingus.bim
+	$(MAKE) dingus.hrb
 	$(MAKE) dingus.kernel
 
 .PHONY: clean
 clean:
 	$(MAKE) -C init clean
+	$(MAKE) -C graphic clean
 	$(MAKE) -C drivers clean
 	$(MAKE) -C memory clean
 	$(MAKE) -C main clean
@@ -55,6 +60,7 @@ clean:
 .PHONY: src_only
 src_only:
 	$(MAKE) -C init src_only
+	$(MAKE) -C graphic src_only
 	$(MAKE) -C drivers src_only
 	$(MAKE) -C memory src_only
 	$(MAKE) -C main src_only

@@ -46,19 +46,23 @@ void entry(void)
 	p = (char *) 0xa0000;
 
 	for (i = 0; i < 320; i++) {
-		point8(i, 100);
+		point1(i, 100);
 	}
 	
 	for(i = 0; i < 200; i++){
-		point9(160, i);
+		point2(160, i);
 	}
 	
 	for(i = 0; i < 320; i++){
-		pointa(i, (int)(-sin((i - 160)/10.0)*60) + 100);
+		point3(i, (int)(-sin((i - 160)/16.0)*60) + 100);
 	}
 	for(i = 0; i < 320; i++){
-		pointb(i, (int)(-cos((i - 160)/10.0)*60) + 100);
+		point4(i, (int)(-cos((i - 160)/16.0)*60) + 100);
 	}
+	for(i = 0; i < 320; i++){
+		point6(i, (int)(-sqrt(i * 100)) + 199);
+	}
+	putfonts8_asc(p, 320, 10, 10, 4, "Hello World!");
 
 	for (;;) {
 		io_hlt();
